@@ -29,4 +29,15 @@ public class PrecioService {
     public void deleteById(String id) {
         precioRepository.deleteById(id);
     }
+
+    public Optional<Precio> findByRuta(String ciudadOrigen, String ciudadDestino) {
+        System.out.println("Buscando precio para ruta: " + ciudadOrigen + " -> " + ciudadDestino);
+        Optional<Precio> precio = precioRepository.findByCiudadOrigenAndCiudadDestino(ciudadOrigen, ciudadDestino);
+        if (precio.isPresent()) {
+            System.out.println("Precio encontrado: " + precio.get().getPrecio());
+        } else {
+            System.out.println("No se encontró precio para la ruta especificada.");
+        }
+        return precio;
+    }
 }

@@ -15,7 +15,8 @@ public class Reserva {
     private String direccionPasajero;
     private String ciudadOrigen;
     private String ciudadDestino;
-
+    private String cantidadPuestos;
+    private String precio;
     private Chofer chofer;  // Aquí se almacenará el documento embebido de chofer
     private Factura factura;
 
@@ -101,7 +102,23 @@ public class Reserva {
         return factura;
     }
 
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
     public void setFactura(Factura factura) {
         this.factura = factura;
+    }
+
+    public String getCantidadPuestos() {
+        return cantidadPuestos;
+    }
+
+    public void setCantidadPuestos(String cantidadPuestos) {
+        this.cantidadPuestos = cantidadPuestos;
     }
 }

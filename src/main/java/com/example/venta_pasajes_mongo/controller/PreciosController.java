@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -42,6 +39,12 @@ public class PreciosController {
         }
 
         return new ArrayList<>(ciudades);
+    }
+
+    @GetMapping("/precioRuta")
+    public ResponseEntity<Precio> getPrecioByRuta(@RequestParam String ciudadOrigen, @RequestParam String ciudadDestino) {
+        Optional<Precio> precio = precioService.findByRuta(ciudadOrigen, ciudadDestino);
+        return precio.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
